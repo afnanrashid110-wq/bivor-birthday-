@@ -1,0 +1,439 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Happy Birthday Bivor | 2026</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+ background:#050505;color:#f5d58b;
+ font-family:Georgia,serif;overflow-x:hidden
+}
+canvas{position:fixed;inset:0;z-index:0;pointer-events:none}
+.screen{
+ position:relative;z-index:1;min-height:100vh;
+ display:flex;align-items:center;justify-content:center;
+ flex-direction:column;text-align:center;padding:25px
+}
+.hidden{display:none!important}
+.gold{color:#e9c16b;letter-spacing:4px;font-size:12px}
+h1{
+ font-size:clamp(40px,10vw,82px);letter-spacing:5px;
+ text-shadow:0 0 15px #c18a2e,0 0 45px #9d7025
+}
+h2{font-size:clamp(24px,6vw,42px);margin:18px 0}
+p{font-size:17px;line-height:1.9;color:#e9dfc9}
+.line{
+ width:150px;height:1px;background:#d4a94e;
+ margin:25px auto;box-shadow:0 0 15px #d4a94e
+}
+button{
+ background:linear-gradient(135deg,#ffe8a8,#b18431);
+ color:#171006;border:1px solid #ffe7a0;
+ padding:14px 25px;border-radius:30px;
+ font-weight:bold;margin:12px;cursor:pointer
+}
+.glow{animation:glow 3s infinite}
+@keyframes glow{
+ 50%{text-shadow:0 0 30px #ffe4a0,0 0 65px #bd8b32}
+}
+.count{
+ display:grid;grid-template-columns:repeat(4,minmax(65px,1fr));
+ gap:9px;width:100%;max-width:470px;margin:25px auto
+}
+.count div,.stat{
+ border:1px solid #80612a;padding:15px 5px;
+ background:#111;box-shadow:0 0 15px #33240c
+}
+.count strong,.stat strong{
+ display:block;font-size:clamp(23px,6vw,32px);color:#ffe4a0
+}
+.count small,.stat small{
+ font-size:10px;letter-spacing:1px;color:#bba16b
+}
+.scene{display:none;max-width:850px;animation:appear 1.8s ease}
+.scene.active{display:block}
+@keyframes appear{
+ from{opacity:0;transform:translateY(40px) scale(.96);filter:blur(8px)}
+ to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}
+}
+.ring{
+ width:175px;height:175px;border:1px solid #d6ad55;
+ border-radius:50%;display:grid;place-items:center;
+ margin:30px auto;box-shadow:0 0 30px #8b6724,inset 0 0 25px #8b6724;
+ animation:rotate 15s linear infinite
+}
+.ring span{font-size:65px}
+@keyframes rotate{to{transform:rotate(360deg)}}
+.stats{
+ display:grid;grid-template-columns:repeat(2,minmax(120px,1fr));
+ gap:12px;margin:25px auto;max-width:500px;width:100%
+}
+.stat{padding:18px 8px}
+#progress{
+ position:fixed;bottom:0;left:0;height:3px;
+ background:#ffe3a0;width:0;z-index:5;
+ box-shadow:0 0 15px #ffe3a0
+}
+footer{color:#8d784e;font-size:11px;margin-top:25px}
+</style>
+</head>
+<body>
+
+<canvas id="stars"></canvas>
+<div id="progress"></div>
+
+<!-- COUNTDOWN SCREEN -->
+<section id="countdownScreen" class="screen">
+ <p class="gold">A SPECIAL MOMENT IS WAITING</p>
+ <div class="line"></div>
+ <h1 class="glow">BIVOR</h1>
+ <h2>Something Beyond Ordinary</h2>
+ <p>A celebration of friendship, memories and brotherhood.</p>
+
+ <div class="ring"><span>✦</span></div>
+
+ <p class="gold">COUNTDOWN TO YOUR SPECIAL DAY</p>
+ <div class="count">
+  <div><strong id="days">00</strong><small>DAYS</small></div>
+  <div><strong id="hours">00</strong><small>HOURS</small></div>
+  <div><strong id="minutes">00</strong><small>MINUTES</small></div>
+  <div><strong id="seconds">00</strong><small>SECONDS</small></div>
+ </div>
+
+ <p class="gold">29 NOVEMBER 2026 · 12:00 AM</p>
+ <p style="font-size:13px;margin-top:15px">
+  The best things are worth waiting for.
+ </p>
+ <button id="soundButton" onclick="enableSound()">♫ ENABLE SOUND</button>
+ <footer>PLEASE WAIT FOR THE SPECIAL MOMENT</footer>
+</section>
+
+<!-- BIRTHDAY EXPERIENCE -->
+<section id="celebration" class="screen hidden">
+<div id="scenes">
+
+ <div class="scene active">
+  <p class="gold">THE MOMENT HAS ARRIVED</p>
+  <div class="ring"><span>♛</span></div>
+  <h1 class="glow">HAPPY<br>BIRTHDAY</h1>
+  <h2>ASHRAFUL ISLAM BIVOR</h2>
+  <p>Today, the spotlight belongs to you.</p>
+ </div>
+
+ <div class="scene">
+  <p class="gold">A MESSAGE FROM THE HEART</p>
+  <h1>Dear Bivor</h1>
+  <div class="line"></div>
+  <p>Some people make life more beautiful simply by being part of it. You are one of those rare people. Your friendship is a gift, and every memory is a little treasure.</p>
+ </div>
+
+ <div class="scene">
+  <p class="gold">MORE THAN FRIENDS</p>
+  <h1 class="glow">BROTHERS</h1>
+  <div class="line"></div>
+  <p>Not every brother shares the same blood. Some are chosen by the heart. True friendship is built on loyalty, trust, respect and standing beside each other.</p>
+ </div>
+
+ <div class="scene">
+  <p class="gold">OUR KIND OF FRIENDSHIP</p>
+  <h2>Unforgettable Moments</h2>
+  <div class="ring"><span>✧</span></div>
+  <p>Random jokes, endless conversations, unexpected adventures and memories that never get old. These little things make friendship extraordinary.</p>
+ </div>
+
+ <div class="scene">
+  <p class="gold">YOUR NEXT CHAPTER</p>
+  <h1 class="glow">DREAM BIG</h1>
+  <div class="line"></div>
+  <p>May your future be full of opportunities. May your hard work bring success, your heart find peace, and your dreams become beautiful realities.</p>
+ </div>
+
+ <div class="scene">
+  <p class="gold">A PROMISE OF FRIENDSHIP</p>
+  <h2>Through Every Chapter</h2>
+  <div class="line"></div>
+  <p>Time changes everything, but genuine friendship leaves memories that stay forever. Here's to more laughter, more achievements and more unforgettable days.</p>
+ </div>
+
+ <div class="scene">
+  <p class="gold">NEVER FORGET</p>
+  <h1 class="glow">YOU MATTER.</h1>
+  <div class="line"></div>
+  <p>Keep being yourself. Keep learning. Keep growing. Never let the challenges of life make you forget how much potential you carry.</p>
+ </div>
+
+ <div class="scene">
+  <p class="gold">THE THREE WORDS</p>
+  <h1 class="glow">RESPECT.</h1>
+  <h1 class="glow">LOYALTY.</h1>
+  <h1 class="glow">BROTHERHOOD.</h1>
+  <p>Some bonds are simply priceless.</p>
+ </div>
+
+ <div class="scene">
+  <p class="gold">A SPECIAL WISH</p>
+  <div class="ring"><span>♛</span></div>
+  <h2 class="glow">HAPPY 15TH BIRTHDAY!</h2>
+  <p>May this year bring you happiness, confidence, courage and countless reasons to smile.</p>
+ </div>
+
+ <div class="scene">
+  <p class="gold">ONE FRIENDSHIP. MANY MEMORIES.</p>
+  <h1 class="glow">BIVOR</h1>
+  <div class="line"></div>
+  <h2>Once a Friend,<br>Always a Brother.</h2>
+  <p>Wishing you a wonderful journey ahead.</p>
+  <p class="gold" style="margin-top:25px">29 · 11 · 2026</p>
+ </div>
+
+ <div class="scene">
+  <p class="gold">YOUR JOURNEY SO FAR</p>
+  <h2>Time on Earth</h2>
+  <p>Since 29 November 2011</p>
+  <div class="stats">
+   <div class="stat"><strong id="ageDays">0</strong><small>TOTAL DAYS</small></div>
+   <div class="stat"><strong id="ageHours">0</strong><small>TOTAL HOURS</small></div>
+   <div class="stat"><strong id="ageMinutes">0</strong><small>TOTAL MINUTES</small></div>
+   <div class="stat"><strong id="ageSeconds">0</strong><small>TOTAL SECONDS</small></div>
+  </div>
+  <p id="ageYears" class="gold"></p>
+  <p>Every second is a new part of your story.</p>
+ </div>
+
+ <div class="scene">
+  <p class="gold">THE FINAL MESSAGE</p>
+  <h1 class="glow">KEEP SHINING.</h1>
+  <div class="ring"><span>✦</span></div>
+  <h2>Happy Birthday, Brother.</h2>
+  <p>May your story always be filled with golden moments.</p>
+  <p class="gold" style="margin-top:25px">MADE WITH FRIENDSHIP</p>
+ </div>
+
+</div>
+
+<div class="line"></div>
+<p id="chapter" class="gold">CHAPTER 01 / 12</p>
+<button onclick="toggleMusic()" id="musicButton">♫ MUSIC ON</button>
+<button onclick="replay()">↻ REPLAY</button>
+<footer>DESIGNED WITH FRIENDSHIP · FOR BIVOR</footer>
+</section>
+
+<script>
+// Bangladesh time: 29 November 2026 at 12:00 AM
+const birthday = new Date("2026-11-29T00:00:00+06:00");
+
+let audio=null;
+let soundEnabled=false;
+let musicEnabled=true;
+let musicTimer=null;
+let tickTimer=null;
+let noteIndex=0;
+let sceneIndex=0;
+let sceneTimer=null;
+let entered=false;
+
+function playTone(freq=700,duration=.15,volume=.035){
+ if(!audio || !soundEnabled)return;
+ const osc=audio.createOscillator();
+ const gain=audio.createGain();
+ osc.type="sine";
+ osc.frequency.setValueAtTime(freq,audio.currentTime);
+ gain.gain.setValueAtTime(volume,audio.currentTime);
+ gain.gain.exponentialRampToValueAtTime(.001,audio.currentTime+duration);
+ osc.connect(gain);
+ gain.connect(audio.destination);
+ osc.start();
+ osc.stop(audio.currentTime+duration);
+}
+
+function vibrate(pattern){
+ if(navigator.vibrate)navigator.vibrate(pattern);
+}
+
+function enableSound(){
+ audio=new (window.AudioContext||window.webkitAudioContext)();
+ audio.resume();
+ soundEnabled=true;
+ document.getElementById("soundButton").textContent="♫ SOUND ENABLED";
+ playTone(660,.3,.05);
+ vibrate([100,60,100]);
+ startTicking();
+ if(new Date()>=birthday)unlockBirthday();
+}
+
+function startTicking(){
+ if(tickTimer || !soundEnabled)return;
+ tickTimer=setInterval(()=>{
+  if(new Date()<birthday){
+   playTone(1050,.045,.025);
+  }else{
+   clearInterval(tickTimer);
+   tickTimer=null;
+  }
+ },1000);
+}
+
+function updateCountdown(){
+ const now=new Date();
+ const diff=birthday-now;
+
+ if(diff<=0){
+  unlockBirthday();
+  return;
+ }
+
+ document.getElementById("days").textContent=
+  Math.floor(diff/86400000);
+ document.getElementById("hours").textContent=
+  Math.floor(diff%86400000/3600000);
+ document.getElementById("minutes").textContent=
+  Math.floor(diff%3600000/60000);
+ document.getElementById("seconds").textContent=
+  Math.floor(diff%60000/1000);
+}
+
+function unlockBirthday(){
+ if(entered)return;
+ entered=true;
+ document.getElementById("countdownScreen").classList.add("hidden");
+ document.getElementById("celebration").classList.remove("hidden");
+
+ if(tickTimer){clearInterval(tickTimer);tickTimer=null}
+ if(soundEnabled){
+  playTone(440,.3,.05);
+  setTimeout(()=>playTone(660,.5,.05),250);
+  setTimeout(()=>playTone(880,.7,.05),500);
+ }
+ vibrate([100,60,160,60,250]);
+ startShow();
+ if(soundEnabled && musicEnabled)startMelody();
+}
+
+function startMelody(){
+ if(!soundEnabled || !musicEnabled || musicTimer)return;
+ const notes=[261.6,329.6,392,523.2,392,329.6,293.7,349.2];
+ musicTimer=setInterval(()=>{
+  playTone(notes[noteIndex++%notes.length],.65,.018);
+ },650);
+}
+
+function toggleMusic(){
+ musicEnabled=!musicEnabled;
+ document.getElementById("musicButton").textContent=
+  musicEnabled?"♫ MUSIC ON":"♫ MUSIC OFF";
+ if(musicEnabled){
+  startMelody();
+ }else{
+  clearInterval(musicTimer);
+  musicTimer=null;
+ }
+}
+
+function showScene(n){
+ const scenes=document.querySelectorAll(".scene");
+ scenes.forEach((s,i)=>s.classList.toggle("active",i===n));
+ sceneIndex=n;
+ document.getElementById("chapter").textContent=
+  "CHAPTER "+String(n+1).padStart(2,"0")+" / 12";
+ document.getElementById("progress").style.width=
+  ((n+1)/scenes.length*100)+"%";
+
+ if(soundEnabled){
+  playTone(n%3===0?880:620,.22,.035);
+ }
+ if([2,4,7,8,10,11].includes(n)){
+  vibrate([45,35,80]);
+ }
+}
+
+function startShow(){
+ clearInterval(sceneTimer);
+ showScene(0);
+ sceneTimer=setInterval(()=>{
+  sceneIndex=(sceneIndex+1)%12;
+  showScene(sceneIndex);
+ },6250);
+}
+
+function replay(){
+ vibrate([80,50,100]);
+ if(soundEnabled)playTone(700,.3,.05);
+ startShow();
+}
+
+// Life counter: assumed birthday 29 November 2011
+function updateAge(){
+ const born=new Date("2011-11-29T00:00:00+06:00");
+ const now=new Date();
+ let ms=Math.max(0,now-born);
+ document.getElementById("ageDays").textContent=
+  Math.floor(ms/86400000).toLocaleString("en-US");
+ document.getElementById("ageHours").textContent=
+  Math.floor(ms/3600000).toLocaleString("en-US");
+ document.getElementById("ageMinutes").textContent=
+  Math.floor(ms/60000).toLocaleString("en-US");
+ document.getElementById("ageSeconds").textContent=
+  Math.floor(ms/1000).toLocaleString("en-US");
+
+ let years=now.getFullYear()-born.getFullYear();
+ let months=now.getMonth()-born.getMonth();
+ let days=now.getDate()-born.getDate();
+ if(days<0){
+  months--;
+  days+=new Date(now.getFullYear(),now.getMonth(),0).getDate();
+ }
+ if(months<0){years--;months+=12}
+ document.getElementById("ageYears").textContent=
+  years+" YEARS · "+months+" MONTHS · "+days+" DAYS";
+}
+updateAge();
+setInterval(updateAge,1000);
+
+// Gold particles
+const canvas=document.getElementById("stars");
+const ctx=canvas.getContext("2d");
+let particles=[];
+
+function resize(){
+ canvas.width=innerWidth*devicePixelRatio;
+ canvas.height=innerHeight*devicePixelRatio;
+ ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
+}
+resize();
+addEventListener("resize",resize);
+
+for(let i=0;i<110;i++){
+ particles.push({
+  x:Math.random()*innerWidth,
+  y:Math.random()*innerHeight,
+  r:Math.random()*2+.4,
+  v:Math.random()*.7+.15,
+  a:Math.random()*.7+.2
+ });
+}
+function animate(){
+ ctx.clearRect(0,0,innerWidth,innerHeight);
+ for(const p of particles){
+  p.y-=p.v;
+  if(p.y<0){p.y=innerHeight;p.x=Math.random()*innerWidth}
+  ctx.beginPath();
+  ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+  ctx.fillStyle="rgba(240,195,95,"+p.a+")";
+  ctx.shadowBlur=12;
+  ctx.shadowColor="#e0ad48";
+  ctx.fill();
+ }
+ requestAnimationFrame(animate);
+}
+animate();
+
+// Keep checking the birthday time
+updateCountdown();
+setInterval(updateCountdown,1000);
+if(new Date()>=birthday)unlockBirthday();
+</script>
+</body>
+</html>
